@@ -76,7 +76,7 @@ return {
 			spec = {
 				{ "<leader>s", group = "[S]earch" },
 				{ "<leader>t", group = "[T]oggle" },
-				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+				-- { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
 			},
 		},
 	},
@@ -144,7 +144,7 @@ return {
 		event = "VimEnter",
 		version = "1.*",
 		dependencies = {
-			-- Snippet Engine
+			-- .Snippet Engine
 			{
 				"L3MON4D3/LuaSnip",
 				version = "2.*",
@@ -505,6 +505,12 @@ return {
 				window = {
 					mappings = {
 						["\\"] = "close_window",
+						["P"] = {
+							"toggle_preview",
+							config = {
+								use_float = true,
+							},
+						},
 					},
 				},
 			},

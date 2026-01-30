@@ -10,7 +10,7 @@ return {
 				options = {
 					transparent = true,
 					styles = {
-						floats = "transparent",
+						-- floats = "transparent",
 						sidebars = "transparent",
 					},
 				},
