@@ -9,8 +9,9 @@ local map = vim.keymap.set
 -- ── General ────────────────────────────────────────────────────────────────
 map('n', '<leader>w', ':write<CR>', { desc = 'Write buffer' })
 map('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlight' })
-map('n', '<leader>e', ':Explore<CR>', { desc = 'File [E]xplorer' })
+-- map('n', '<leader>e', ':Explore<CR>', { desc = 'File [E]xplorer' })
 map('n', '<leader>re', ':restart<CR>', { desc = '[RE]start neovim' })
+map('x', 'p', [["_dP]], { desc = 'Paste over selection without losing yanked text' })
 
 -- ── Diagnostics ────────────────────────────────────────────────────────────
 map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })

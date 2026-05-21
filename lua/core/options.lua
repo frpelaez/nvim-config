@@ -49,8 +49,11 @@ o.inccommand = 'split'
 o.winborder = 'rounded'
 o.fillchars = { eob = ' ' }
 
+o.completeopt = 'menuone,fuzzy,nosort'
+
 -- Cursor style (no blinking)
 o.guicursor = 'n-v-c:blinkon0-block,i-ci-ve:blinkon0-ver25,r-cr:blinkon0-hor20,o:blinkon0-hor50'
+-- o.guicursor = ''
 
 -- Timings
 o.updatetime = 250

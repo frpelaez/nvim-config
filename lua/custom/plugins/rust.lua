@@ -3,23 +3,22 @@ vim.pack.add { {
   version = vim.version.range '^9',
 } }
 
-local bufnr = vim.api.nvim_get_current_buf()
-
-vim.keymap.set('n', '<leader>a', function() vim.cmd.RustLsp 'codeAction' end, { silent = true, buffer = bufnr })
-
 vim.g.rustaceanvim = {
   server = {
-    default_settings = {
+    settings = {
       ['rust-analyzer'] = {
-        cargo = { allFeatures = true },
-        checkOnSave = false,
+        cargo = {
+          allFeatures = true,
+          buildScripts = { enable = true },
+        },
         check = {
           command = 'clippy',
-          extraArgs = { '--', '-W', 'clippy::all' },
-          workspace = false,
+        },
+        procMacro = {
+          enable = true,
         },
         files = {
-          watcher = 'server', -- 'server' (default 'client') puede ser más lento en Windows
+          watcher = 'server',
         },
       },
     },

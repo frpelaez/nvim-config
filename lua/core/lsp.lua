@@ -104,7 +104,7 @@ local servers = {
     end,
     ---@type lspconfig.settings.lua_ls
     settings = {
-      Lua = { format = { enable = false } },
+      Lua = { format = { enable = false }, diagnostics = { globals = { 'vim' } } },
     },
   },
 }
@@ -146,6 +146,7 @@ require('conform').setup {
 }
 
 vim.keymap.set({ 'n', 'v' }, '<leader>f', function() require('conform').format { async = true } end, { desc = '[F]ormat buffer' })
+vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float, { desc = 'Show line [D]iagnostics' })
 
 -- ── Snippets (LuaSnip) ────────────────────────────────────────────────────
 vim.pack.add { { src = Gh 'L3MON4D3/LuaSnip', version = vim.version.range '2.*' } }

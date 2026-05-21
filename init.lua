@@ -68,15 +68,41 @@ do
 
   -- mini.nvim
   vim.pack.add { gh 'nvim-mini/mini.nvim' }
+
   require('mini.ai').setup {
     mappings = { around_next = 'aa', inside_next = 'ii' },
     n_lines = 500,
   }
+
   require('mini.surround').setup()
+
   local statusline = require 'mini.statusline'
   statusline.setup { use_icons = vim.g.have_nerd_font }
   ---@diagnostic disable-next-line: duplicate-set-field
   statusline.section_location = function() return '%2l:%-2v' end
+
+  local MiniFiles = require 'mini.files'
+  MiniFiles.setup {
+    mappings = {
+      go_in_plus = '<L>',
+      go_out_plus = '<H>',
+    },
+  }
+  vim.keymap.set('n', '<leader>e', '<cmd>lua MiniFiles.open()<CR>', { desc = 'Toggle mini file explorer' })
+  vim.keymap.set('n', '<leader>E', function()
+    MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
+    MiniFiles.reveal_cwd()
+  end, { desc = 'Toggle mini file explorer into current file' })
+
+  -- require('mini.notify').setup {
+  --   content = {
+  --     format = function(notif) return notif.msg end,
+  --   },
+  -- }
+
+  -- require('mini.cmdline').setup {
+  --   autocorrect = { enable = false },
+  -- }
 end
 
 -- ── Search & navigation (Telescope) ──────────────────────────────────────
@@ -150,9 +176,24 @@ end
 
 -- ── Treesitter ────────────────────────────────────────────────────────────
 do
-  vim.pack.add { { src = gh 'nvim-treesitter/nvim-treesitter', version = 'main' } }
+  vim.pack.add { { src = gh 'nvim-treesitter/nvim-treesitter', branch = 'main' } }
 
-  local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+  local parsers = {
+    'bash',
+    'c',
+    'diff',
+    'html',
+    'lua',
+    'luadoc',
+    'markdown',
+    'markdown_inline',
+    'query',
+    'vim',
+    'vimdoc',
+    'go',
+    'rust',
+    'python',
+  }
   require('nvim-treesitter').install(parsers)
 
   ---@param buf integer
