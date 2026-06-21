@@ -70,7 +70,8 @@ require('fidget').setup {}
 ---@type table<string, vim.lsp.Config>
 local servers = {
   -- Add / uncomment servers you want Mason to install & enable:
-  -- clangd      = {},
+  ols = {},
+  clangd = {},
   gopls = {},
   black = {},
   ruff = {},

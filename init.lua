@@ -103,6 +103,8 @@ do
   -- require('mini.cmdline').setup {
   --   autocorrect = { enable = false },
   -- }
+
+  vim.pack.add { gh 'stevearc/dressing.nvim' }
 end
 
 -- ── Search & navigation (Telescope) ──────────────────────────────────────
